@@ -17,43 +17,61 @@ session = DBSession()
 #All Restaurants
 @app.route('/restaurants/')
 def restaurantList():
-    return "This will return a list of all restaurants and link to menu"
+    return "Return a list of all restaurants and link to menu"
+
+
+#New Restaurant
+@app.route('/restaurant/new')
+def newRestaurant():
+    return "Return page to add new Restaurant"
+
+
+#Edit Restaurant
+@app.route('/restaurant/<int:restaurant_id>/edit', methods=['GET', 'POST'])
+def editRestaurant(restaurant_id, menu_id):
+    return "Return a form to POST an EDIT to a Restaurant"
+
+
+#Delete Restaurant
+@app.route('/restaurant/<int:restaurant_id>/delete', methods=['GET', 'POST'])
+def deleteRestaurant(restaurant_id, menu_id):
+    return "Return a confirmation page to DELETE a Restaurant"
 
 
 #Restaurant Menu
 @app.route('/restaurants/<int:restaurant_id>/menu')
-def restaurantMenu(restaurant_id):
-  return "This will return a specific restaurant's menu"
+def showMenu(restaurant_id):
+  return "Return a specific restaurant's menu"
 
 
 #Add Menu Item
 @app.route('/restaurants/<int:restaurant_id>/new', methods=['GET', 'POST'])
 def newMenuItem(restaurant_id):
-    return "This will return a form to POST a new menu item"
+    return "Return a form to POST a new menu item"
 
 
 #Edit Menu Item
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/edit', methods=['GET', 'POST'])
 def editMenuItem(restaurant_id, menu_id):
-    return "This will return a form to POST an EDIT to a menu item"
+    return "Return a form to POST an EDIT to a menu item"
 
 
 #Delete Menu Item
 @app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete', methods=['GET', 'POST'])
 def deleteMenuItem(restaurant_id, menu_id):
-    return "This will return a confirmation page to DELETE a menu item"
+    return "Return a confirmation page to DELETE a menu item"
 
 
 #JSON all menu items
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
-    return "This will return the JSON for all menu items"
+    return "Return the JSON for all menu items"
 
 
 #JSON for specific menu item(s)
 @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
 def menuItemJSON(restaurant_id, menu_id):
-    return "This will return the JSON for a specific menu item(s)"
+    return "Return the JSON for a specific menu item(s)"
 
 
 if __name__ == '__main__':
