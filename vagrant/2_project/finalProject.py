@@ -15,7 +15,7 @@ restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', '
 items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
 item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
 
-#All Restaurants
+#Show Restaurants
 @app.route('/restaurants/')
 def showRestaurants():
     return render_template(
@@ -37,43 +37,43 @@ def editRestaurant():
 #Delete Restaurant
 @app.route('/restaurant/1/delete', methods=['GET', 'POST'])
 def deleteRestaurant():
-    return render_template('deleterestaurant.html', restaurant=restaurant)
+     return render_template('deleterestaurant.html', restaurant=restaurant)
 
 
-#Restaurant Menu
-@app.route('/restaurants/<int:restaurant_id>/menu')
-def showMenu(restaurant_id):
-  return "Return a specific restaurant's menu"
+#Show Menu (for chosen restaurant)
+@app.route('/restaurants/1/menu')
+def showMenu():
+    return render_template('showmenu.html', restaurant=restaurant, items=items)
 
 
-#Add Menu Item
-@app.route('/restaurants/<int:restaurant_id>/new', methods=['GET', 'POST'])
-def newMenuItem(restaurant_id):
-    return "Return a form to POST a new menu item"
+#New Menu Item
+@app.route('/restaurants/1/new', methods=['GET', 'POST'])
+def newMenuItem():
+    return render_template('newmenuitem.html', restaurant=restaurant, items=items)
 
 
 #Edit Menu Item
-@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/edit', methods=['GET', 'POST'])
-def editMenuItem(restaurant_id, menu_id):
-    return "Return a form to POST an EDIT to a menu item"
+@app.route('/restaurants/1/1/edit', methods=['GET', 'POST'])
+def editMenuItem():
+    return render_template('editmenuitem.html', restaurant=restaurant, item=item)
 
 
 #Delete Menu Item
-@app.route('/restaurants/<int:restaurant_id>/<int:menu_id>/delete', methods=['GET', 'POST'])
-def deleteMenuItem(restaurant_id, menu_id):
-    return "Return a confirmation page to DELETE a menu item"
+@app.route('/restaurants/1/1/delete', methods=['GET', 'POST'])
+def deleteMenuItem():
+    return render_template('deletemenuitem.html', restaurant=restaurant, item=item)
 
 
-#JSON all menu items
-@app.route('/restaurants/<int:restaurant_id>/menu/JSON')
-def restaurantMenuJSON(restaurant_id):
-    return "Return the JSON for all menu items"
+# #JSON all menu items
+# @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
+# def restaurantMenuJSON(restaurant_id):
+#     return "Return the JSON for all menu items"
 
 
-#JSON for specific menu item(s)
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
-def menuItemJSON(restaurant_id, menu_id):
-    return "Return the JSON for a specific menu item(s)"
+# #JSON for specific menu item(s)
+# @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+# def menuItemJSON(restaurant_id, menu_id):
+#     return "Return the JSON for a specific menu item(s)"
 
 
 if __name__ == '__main__':
