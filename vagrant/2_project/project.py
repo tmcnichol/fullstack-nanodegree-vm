@@ -27,10 +27,10 @@ def menuItemJSON(restaurant_id, menu_id):
     return jsonify(item.serialize)
 
 @app.route('/restaurants/')
-def restaurantList():
+def showRestaurants():
     restaurants = session.query(Restaurant)
     return render_template(
-        'allrestaurants.html', restaurants=restaurants)
+        'showrestaurants.html', restaurants=restaurants)
 
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def restaurantMenu(restaurant_id):
