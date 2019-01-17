@@ -1,3 +1,11 @@
-.derp {
-    color: aqua;
+.hero {
+    background-image: url("https://images.unsplash.com/photo-1492085479927-5bc71b369928?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=676&q=80");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-color: black;
+    background-size: 75%;
+}
+
+li {
+    list-style: none;
 }
