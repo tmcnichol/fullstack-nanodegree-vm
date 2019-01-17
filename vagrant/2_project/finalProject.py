@@ -23,7 +23,7 @@ def showRestaurants():
 
 
 #New Restaurant
-@app.route('/restaurant/new', methods=['GET', 'POST'])
+@app.route('/restaurants/new', methods=['GET', 'POST'])
 def newRestaurant():
     if request.method == 'POST':
         newRest = Restaurant(name=request.form['name'])
@@ -115,6 +115,13 @@ def deleteMenuItem(restaurant_id, menu_id):
         return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
         return render_template('deletemenuitem.html', restaurant_id=restaurant_id, item=itemToDelete)
+
+
+#JSON all Restaurants
+@app.route('/restaurants/JSON')
+def allRestaurantsJSON():
+    rests = session.query(Restaurant).all()
+    return jsonify(Restaurant=[r.serialize for r in rests])
 
 
 #JSON all menu items
