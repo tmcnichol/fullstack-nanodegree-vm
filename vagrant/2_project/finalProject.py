@@ -124,6 +124,13 @@ def allRestaurantsJSON():
     return jsonify(Restaurant=[r.serialize for r in rests])
 
 
+#JSON single Restaurant
+@app.route('/restaurants/<int:restaurant_id>/JSON')
+def singleRestaurantJSON(restaurant_id):
+    onerest = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    return jsonify(Restaurant=[onerest.serialize])
+
+
 #JSON all menu items
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
